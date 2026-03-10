@@ -20,7 +20,7 @@ export default function HeroSection() {
         >
           <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full border-4 border-primary/20 p-2 shadow-glow">
             <img 
-              src="/path-ke-foto-kamu.jpg" 
+              src="/public/foto akun1.jpg"
               alt="Abyan" 
               className="w-full h-full object-cover rounded-full"
             />
@@ -43,7 +43,7 @@ export default function HeroSection() {
           <h1 className="font-display text-4xl md:text-6xl lg:text-7xl font-bold mb-6">
             Perkenalkan
             <br />
-            <span className="text-primary">Nama Saya Abyan</span>
+            <span className="text-primary">Saya Abyan</span>
           </h1>
 
           <p className="text-lg text-muted-foreground mb-8">

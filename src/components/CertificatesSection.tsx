@@ -4,59 +4,33 @@ import { Button } from '@/components/ui/button';
 
 const certificates = [
   {
-    title: 'AWS Certified Solutions Architect',
-    issuer: 'Amazon Web Services',
-    date: '2024',
-    credentialId: 'AWS-SAA-123456',
+    title: 'Web yang Keren',
+    issuer: 'Bang naufal Angkasah',
+    date: '2026',
+    credentialId: '',
     image: '🏆',
     color: 'from-orange-500/20 to-yellow-500/20',
     link: '#',
   },
   {
-    title: 'Google Professional Cloud Developer',
-    issuer: 'Google Cloud',
-    date: '2023',
-    credentialId: 'GCP-PCD-789012',
-    image: '☁️',
-    color: 'from-blue-500/20 to-cyan-500/20',
+    title: 'Juara 2 Melukis - Class Meeting',
+    issuer: 'MTsN 1 Model Banda Aceh',
+    date: '2024',
+    credentialId: 'Ex-Ganjil-2024',
+    image: '🎨', // Ikon Palette Seni
+    color: 'from-purple-500/20 to-pink-500/20',
     link: '#',
   },
   {
-    title: 'Meta Front-End Developer',
-    issuer: 'Meta (Coursera)',
-    date: '2023',
-    credentialId: 'META-FE-345678',
-    image: '⚛️',
-    color: 'from-blue-600/20 to-indigo-500/20',
+    title: 'Juara 3 Ilustrasi Tingkat SMA/MA',
+    issuer: 'COMET 4 - Methodist Banda Aceh',
+    date: '2025',
+    credentialId: 'COMET-ILL-2023',
+    image: '✍️', // Ikon Ilustrasi
+    color: 'from-orange-500/20 to-yellow-500/20',
     link: '#',
-  },
-  {
-    title: 'MongoDB Certified Developer',
-    issuer: 'MongoDB University',
-    date: '2023',
-    credentialId: 'MDB-DEV-901234',
-    image: '🍃',
-    color: 'from-green-500/20 to-emerald-500/20',
-    link: '#',
-  },
-  {
-    title: 'Certified Kubernetes Administrator',
-    issuer: 'CNCF',
-    date: '2022',
-    credentialId: 'CKA-567890',
-    image: '⚙️',
-    color: 'from-indigo-500/20 to-purple-500/20',
-    link: '#',
-  },
-  {
-    title: 'Professional Scrum Master I',
-    issuer: 'Scrum.org',
-    date: '2022',
-    credentialId: 'PSM-I-234567',
-    image: '📋',
-    color: 'from-teal-500/20 to-cyan-500/20',
-    link: '#',
-  },
+  }
+
 ];
 
 export default function CertificatesSection() {

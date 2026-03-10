@@ -6,94 +6,113 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 210 20% 90%;
+    --background: 30 15% 98%;
+    --foreground: 20 10% 15%;
 
-    --card: 220 20% 12%;
-    --card-foreground: 210 20% 90%;
-    --popover: 220 20% 12%;
-    --popover-foreground: 210 20% 90%;
+    --card: 0 0% 100%;
+    --card-foreground: 20 10% 15%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 20 10% 15%;
 
-    --primary: 175 80% 50%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 220 20% 15%;
-    --secondary-foreground: 210 20% 90%;
-    --muted: 220 20% 15%;
-    --muted-foreground: 215 15% 60%;
+    --primary: 25 30% 45%;
+    --primary-foreground: 30 15% 98%;
+    --secondary: 30 10% 90%;
+    --secondary-foreground: 20 10% 25%;
+    --muted: 30 5% 92%;
+    --muted-foreground: 25 5% 45%;
 
-    --accent:175 80% 50%;
-    --accent-foreground: 0 0% 100%;
+    --accent:30 10% 94%;
+    --accent-foreground: 25 30% 45%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 20% 18%;
-    --input: 220 20% 18%;
-    --ring: 175 80% 50%;
+    --border: 30 10% 88%;
+    --input: 30 10% 88%;
+    --ring: 25 30% 45%;
 
     --radius: 0.75rem;
 
-    /* Custom tokens */
-    --gradient-primary: linear-gradient(135deg, hsl(293, 72%, 49%) 0%, hsl(200, 80%, 60%) 100%);
-    --gradient-hero: linear-gradient(180deg, hsl(236, 96%, 52%) 0%, hsl(220, 30%, 10%) 100%);
-    --shadow-glow:0 0 30px hsla(175, 80%, 50%, 0.4), 0 0 60px hsla(175, 80%, 50%, 0.2);
-    --shadow-card: 0 4px 20px hsla(0, 0%, 0%, 0.4);
-    --shadow-card-hover: 0 10px 30px hsla(175, 80%, 50%, 0.2);
+    /* Custom tokens - Gradient & Shadows */
+  --gradient-primary: linear-gradient(135deg, hsl(25, 30%, 45%) 0%, hsl(30, 10%, 65%) 100%);
+  --gradient-hero: linear-gradient(180deg, hsl(30, 15%, 98%) 0%, hsl(30, 10%, 90%) 100%);
+  
+  /* Shadow yang lebih soft (menggunakan undertone coklat/abu) */
+  --shadow-glow: 0 0 30px hsla(25, 30%, 45%, 0.15), 0 0 60px hsla(25, 30%, 45%, 0.05);
+  --shadow-card: 0 4px 20px hsla(20, 10%, 10%, 0.05);
+  --shadow-card-hover: 0 10px 30px hsla(25, 30%, 45%, 0.12);
 
-    --sidebar-background: 220 25% 8%;
-    --sidebar-foreground: 210 20% 90%;
-    --sidebar-primary: 175 80% 50%;
-    --sidebar-primary-foreground: 0 0% 100s%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 20% 15%;
-    --sidebar-ring: 175 80% 40%;
+  /* Sidebar - Menggunakan kontras Coklat Tua atau Abu-abu Hangat */
+  --sidebar-background: 25 15% 15%; /* Coklat Gelap Sangat Deep */
+  --sidebar-foreground: 30 15% 95%; /* Putih Gading */
+  
+  --sidebar-primary: 25 30% 45%; /* Coklat Utama */
+  --sidebar-primary-foreground: 0 0% 100%;
+  
+  --sidebar-accent: 25 15% 22%; /* Highlight Coklat Sedikit Terang */
+  --sidebar-accent-foreground: 30 15% 95%;
+  
+  --sidebar-border: 25 10% 20%;
+  --sidebar-ring: 25 30% 45%;
   }
 
   .dark {
-    --background:  220 25% 8%;
+  /* Background: Abu-abu arang sangat gelap dengan undertone coklat */
+  --background: 20 10% 6%;
+  --foreground: 30 15% 90%;
 
-    --card: 220 25% 12%;
-    --card-foreground: 210 20% 90%;
+  /* Card & Popover: Sedikit lebih terang dari background agar terlihat melayang */
+  --card: 20 10% 9%;
+  --card-foreground: 30 15% 90%;
+  
+  --popover: 20 10% 9%;
+  --popover-foreground: 30 15% 90%;
 
-    --popover: 220 25% 12%;
-    --popover-foreground: 210 20% 90%;
+  /* Primary: Coklat Karamel yang lembut (Soft Gold/Bronze) */
+  --primary: 35 30% 50%;
+  --primary-foreground: 20 10% 6%;
 
-    --primary: 175 80% 50%;
-    --primary-foreground: 220 25% 6%;
+  /* Secondary & Muted: Abu-abu kecoklatan gelap */
+  --secondary: 20 8% 14%;
+  --secondary-foreground: 30 10% 85%;
+  
+  --muted: 20 8% 14%;
+  --muted-foreground: 20 5% 65%;
 
-    --secondary: 220 20% 15%;
-    --secondary-foreground: 210 20% 90%;
+  /* Accent: Coklat tembaga halus */
+  --accent: 30 15% 15%;
+  --accent-foreground: 35 30% 60%;
+  
+  /* Destructive tetap merah namun sedikit lebih 'muted' */
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 98%;
 
-    --muted: 220 20% 15%;
-    --muted-foreground: 215 15% 65%;
-
-    --accent: 175 80% 50%;
-    --accent-foreground: 220 25% 6%;
-
-    --destructive: 0 60% 50%;
-    --destructive-foreground: 0 0% 100%;
-
-    --border: 220 20% 18%;
-    --input: 220 20% 18%;
-    --ring: 175 80% 50%;
+  /* Borders & Inputs */
+  --border: 20 10% 16%;
+  --input: 20 10% 16%;
+  --ring: 35 30% 50%;
 
     /* Custom tokens dark */
-    --gradient-primary: linear-gradient(135deg, hsl(--bg-dark: hsl(220, 25%, 8%);)));
-    --gradient-hero: linear-gradient(180deg, hsl(115, 91%, 55%) 0%, hsl((210, 20%, 90%);) 100%);
+  --gradient-primary: linear-gradient(135deg, hsl(20, 10%, 10%), hsl(25, 15%, 15%));
+  --gradient-hero: linear-gradient(180deg, hsl(35, 30%, 25%) 0%, hsl(20, 10%, 6%) 100%);
 
-    --shadow-glow: 0 0 60px hsl(175 80% 50% / 0.4);
-    --shadow-card: 0 4px 20px hsl(0 0% 0% / 0.3);
-    --shadow-card-hover: 0 8px 30px hsl(175 80% 50% / 0.15);
+  /* Shadow dengan glow coklat tipis (Warm Glow) */
+  --shadow-glow: 0 0 60px hsl(35 50% 50% / 0.08);
+  --shadow-card: 0 8px 24px hsl(20 10% 2% / 0.5);
+  --shadow-card-hover: 0 12px 40px hsl(35 40% 50% / 0.12);
 
-    --sidebar-background: 220 25% 8%;
-    --sidebar-foreground: 210 20% 90%;
-    --sidebar-primary: 175 80% 50%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 220 20% 15%;
-    --sidebar-accent-foreground: 210 20% 90%;
-    --sidebar-border: 220 20% 18%;
-    --sidebar-ring: 175 80% 50%;
+  /* Sidebar: Konsisten dengan warna charcoal & bronze */
+  --sidebar-background: 20 10% 8%;
+  --sidebar-foreground: 30 15% 90%;
+  
+  --sidebar-primary: 35 30% 50%;
+  --sidebar-primary-foreground: 20 10% 6%;
+  
+  --sidebar-accent: 30 15% 14%;
+  --sidebar-accent-foreground: 35 30% 70%;
+  
+  --sidebar-border: 20 10% 16%;
+  --sidebar-ring: 35 30% 50%;
   }
 }
 

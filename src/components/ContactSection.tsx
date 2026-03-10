@@ -6,8 +6,8 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
 import { z } from 'zod';
-import { supabase } from '@/integrations/supabase/client';
 
+// Schema validasi input menggunakan Zod
 const contactSchema = z.object({
   name: z.string().trim().min(1, 'Nama harus diisi').max(100, 'Nama terlalu panjang'),
   email: z.string().trim().email('Email tidak valid').max(255, 'Email terlalu panjang'),
@@ -20,19 +20,19 @@ const contactInfo = [
     icon: Mail,
     label: 'Email',
     value: 'suksescalonorang721@gmail.com',
-    href: 'mailto:hello@developer.com',
+    href: 'mailto:suksescalonorang721@gmail.com',
   },
   {
     icon: Phone,
-    label: 'Telepon',
+    label: 'Telepon / WhatsApp',
     value: '+62 12 6026 5798',
-    href: 'tel:+6281234567890',
+    href: 'https://wa.me/6281260265798',
   },
   {
     icon: MapPin,
     label: 'Lokasi',
-    value: 'Banda aceh, Indonesia',
-    href: '#',
+    value: 'Banda Aceh, Indonesia',
+    href: 'https://www.google.com/maps/search/Banda+Aceh',
   },
 ];
 
@@ -59,6 +59,7 @@ export default function ContactSection() {
     e.preventDefault();
     setErrors({});
 
+    // Validasi input
     const result = contactSchema.safeParse(formData);
     if (!result.success) {
       const fieldErrors: Record<string, string> = {};
@@ -74,23 +75,30 @@ export default function ContactSection() {
     setIsSubmitting(true);
 
     try {
-      const { data, error } = await supabase.functions.invoke('send-contact-email', {
-        body: formData,
+      // Mengirim data ke Formspree (Pengganti Supabase CLI)
+      const response = await fetch("https://formspree.io/f/xaqpjvyy", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json",
+        },
+        body: JSON.stringify(formData),
       });
 
-      if (error) throw error;
-
-      toast({
-        title: 'Pesan Terkirim! ✨',
-        description: 'Terima kasih telah menghubungi saya. Saya akan membalas secepatnya.',
-      });
-
-      setFormData({ name: '', email: '', subject: '', message: '' });
+      if (response.ok) {
+        toast({
+          title: 'Pesan Terkirim! ✨',
+          description: 'Terima kasih telah menghubungi saya. Saya akan membalas secepatnya.',
+        });
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      } else {
+        throw new Error('Gagal mengirim ke Formspree');
+      }
     } catch (error: any) {
       console.error('Error sending email:', error);
       toast({
         title: 'Gagal Mengirim',
-        description: 'Terjadi kesalahan. Silakan coba lagi atau hubungi langsung via email.',
+        description: 'Terjadi kesalahan. Silakan coba lagi atau hubungi via Instagram.',
         variant: 'destructive',
       });
     } finally {
@@ -99,7 +107,7 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-20 md:py-32">
+    <section id="contact" className="py-20 md:py-32 relative z-10">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -140,6 +148,8 @@ export default function ContactSection() {
                 <motion.a
                   key={info.label}
                   href={info.href}
+                  target="_blank"           // Membuka di tab baru
+                  rel="noopener noreferrer" // Keamanan tambahan
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
@@ -168,9 +178,7 @@ export default function ContactSection() {
             <form onSubmit={handleSubmit} className="space-y-6 p-6 glass rounded-2xl shadow-card">
               <div className="grid sm:grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <label htmlFor="name" className="text-sm font-medium">
-                    Nama
-                  </label>
+                  <label htmlFor="name" className="text-sm font-medium">Nama</label>
                   <Input
                     id="name"
                     name="name"
@@ -179,14 +187,10 @@ export default function ContactSection() {
                     placeholder="Nama Anda"
                     className={errors.name ? 'border-destructive' : ''}
                   />
-                  {errors.name && (
-                    <p className="text-xs text-destructive">{errors.name}</p>
-                  )}
+                  {errors.name && <p className="text-xs text-destructive">{errors.name}</p>}
                 </div>
                 <div className="space-y-2">
-                  <label htmlFor="email" className="text-sm font-medium">
-                    Email
-                  </label>
+                  <label htmlFor="email" className="text-sm font-medium">Email</label>
                   <Input
                     id="email"
                     name="email"
@@ -196,16 +200,12 @@ export default function ContactSection() {
                     placeholder="email@example.com"
                     className={errors.email ? 'border-destructive' : ''}
                   />
-                  {errors.email && (
-                    <p className="text-xs text-destructive">{errors.email}</p>
-                  )}
+                  {errors.email && <p className="text-xs text-destructive">{errors.email}</p>}
                 </div>
               </div>
 
               <div className="space-y-2">
-                <label htmlFor="subject" className="text-sm font-medium">
-                  Subjek
-                </label>
+                <label htmlFor="subject" className="text-sm font-medium">Subjek</label>
                 <Input
                   id="subject"
                   name="subject"
@@ -214,15 +214,11 @@ export default function ContactSection() {
                   placeholder="Subjek pesan"
                   className={errors.subject ? 'border-destructive' : ''}
                 />
-                {errors.subject && (
-                  <p className="text-xs text-destructive">{errors.subject}</p>
-                )}
+                {errors.subject && <p className="text-xs text-destructive">{errors.subject}</p>}
               </div>
 
               <div className="space-y-2">
-                <label htmlFor="message" className="text-sm font-medium">
-                  Pesan
-                </label>
+                <label htmlFor="message" className="text-sm font-medium">Pesan</label>
                 <Textarea
                   id="message"
                   name="message"
@@ -232,9 +228,7 @@ export default function ContactSection() {
                   rows={5}
                   className={errors.message ? 'border-destructive' : ''}
                 />
-                {errors.message && (
-                  <p className="text-xs text-destructive">{errors.message}</p>
-                )}
+                {errors.message && <p className="text-xs text-destructive">{errors.message}</p>}
               </div>
 
               <Button

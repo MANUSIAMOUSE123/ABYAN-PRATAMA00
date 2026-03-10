@@ -8,7 +8,7 @@ export default function Footer() {
     { icon: Github, href: 'https://github.com/MANUSIAMOUSE123/ABYAN-PRATAMA00.git', label: 'GitHub' },
     { icon: Linkedin, href: '#', label: 'LinkedIn' },
     { icon: Youtube, href: '#', label: 'YouTube' },
-    { icon: Instagram, href: 'https://www.instagram.com/abyan_aja_15/', label: 'Instagram' },
+    { icon: Instagram, href: 'https://www.instagram.com/abyan_aja_15/ ', label: 'Instagram' },
   ];
 
   return (

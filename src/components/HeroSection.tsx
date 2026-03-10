@@ -73,4 +73,4 @@ export default function HeroSection() {
       </motion.button>
     </section>
   );
-}
+} 

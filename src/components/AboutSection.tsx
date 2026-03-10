@@ -37,7 +37,7 @@ export default function AboutSection() {
               <div className="aspect-square rounded-2xl overflow-hidden glass shadow-card">
                 <div className="w-full h-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
                   <img 
-  src="/public/foto akun3.jpg" 
+  src="/public/foto akun3.jpg " 
   alt="Muhammad Abyan Pratama" 
   className="w-full h-full object-cover" 
 />

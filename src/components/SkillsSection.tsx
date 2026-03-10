@@ -42,7 +42,7 @@ function SkillBar({ name, level, delay }: { name: string; level: number; delay: 
           initial={{ width: 0 }}
           whileInView={{ width: `${level}%` }}
           viewport={{ once: true }}
-          transition={{ duration: 1, delay: delay + 0.2, ease: 'easeOut' }}
+          transition={{ duration: 1.5, delay: delay + 0.2, ease: 'easeOut' }}
           className="h-full rounded-full bg-gradient-to-r from-primary to-accent"
         />
       </div>
@@ -70,68 +70,58 @@ export default function SkillsSection() {
         </motion.div>
 
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {/* Design Card */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="p-6 glass rounded-2xl shadow-card hover:shadow-card-hover transition-shadow"
-          >
-            <div className="flex items-center gap-3 mb-6">
-              <div className="p-3 rounded-xl bg-primary/10">
-                <span className="text-2xl">🎨</span>
-              </div>
-              <h3 className="font-display text-xl font-bold">Design</h3>
-            </div>
-            <div className="space-y-4">
-              {skills.design.map((skill, index) => (
-                <SkillBar key={skill.name} {...skill} delay={index * 0.1} />
-              ))}
-            </div>
-          </motion.div>
+          
+          {/* Loop untuk setiap kategori Skill agar kode lebih bersih */}
+          {Object.entries(skills).map(([category, items], categoryIdx) => {
+            // Mapping icon manual berdasarkan kategori
+            const icons = { design: '🎨', content: '🎬', tools: '🛠️' };
+            const titles = { design: 'Design', content: 'Content', tools: 'Software' };
 
-          {/* Content Creation Card */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="p-6 glass rounded-2xl shadow-card hover:shadow-card-hover transition-shadow"
-          >
-            <div className="flex items-center gap-3 mb-6">
-              <div className="p-3 rounded-xl bg-primary/10">
-                <span className="text-2xl">🎬</span>
-              </div>
-              <h3 className="font-display text-xl font-bold">Content</h3>
-            </div>
-            <div className="space-y-4">
-              {skills.content.map((skill, index) => (
-                <SkillBar key={skill.name} {...skill} delay={index * 0.1} />
-              ))}
-            </div>
-          </motion.div>
-
-          {/* Software/Tools Card */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="p-6 glass rounded-2xl shadow-card hover:shadow-card-hover transition-shadow"
-          >
-            <div className="flex items-center gap-3 mb-6">
-              <div className="p-3 rounded-xl bg-primary/10">
-                <span className="text-2xl">🛠️</span>
-              </div>
-              <h3 className="font-display text-xl font-bold">Software</h3>
-            </div>
-            <div className="space-y-4">
-              {skills.tools.map((skill, index) => (
-                <SkillBar key={skill.name} {...skill} delay={index * 0.1} />
-              ))}
-            </div>
-          </motion.div>
+            return (
+              <motion.div
+                key={category}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: categoryIdx * 0.1 }}
+                
+                // ANIMASI MELAYANG (Floating effect pada Card)
+                animate={{
+                  y: [0, -10, 0]
+                }}
+                transition={{
+                  duration: 4 + categoryIdx, // Durasi sedikit berbeda tiap card agar tidak kaku
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+                
+                className="p-6 glass rounded-2xl shadow-card hover:shadow-card-hover transition-all duration-300 hover:scale-[1.02]"
+              >
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="p-3 rounded-xl bg-primary/10">
+                    <span className="text-2xl">
+                      {icons[category as keyof typeof icons]}
+                    </span>
+                  </div>
+                  <h3 className="font-display text-xl font-bold">
+                    {titles[category as keyof typeof titles]}
+                  </h3>
+                </div>
+                
+                <div className="space-y-4">
+                  {items.map((skill, index) => (
+                    <SkillBar 
+                      key={skill.name} 
+                      name={skill.name} 
+                      level={skill.level} 
+                      delay={index * 0.1} 
+                    />
+                  ))}
+                </div>
+              </motion.div>
+            );
+          })}
+          
         </div>
       </div>
     </section>

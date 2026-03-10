@@ -9,7 +9,7 @@ const projects = [
     tags: ['Branding', 'Figma', 'Adobe Illustrator'],
     image: '🎨',
     color: 'from-blue-500/20 to-indigo-500/20',
-    demo: '#', // Link ke Behance atau Dribbble
+    demo: 'https://www.tiktok.com/@lamputidurart?_r=1&_t=ZS-94eIDLukFD2', // Link ke Behance atau Dribbble
     isContent: false,
   },
   {
@@ -18,7 +18,7 @@ const projects = [
     tags: ['Illustration', 'Procreate', 'Digital Art'],
     image: '🖌️',
     color: 'from-purple-500/20 to-pink-500/20',
-    demo: '#',
+    demo: 'https://www.tiktok.com/@lamputidurart?_r=1&_t=ZS-94eIDLukFD2',
     isContent: false,
   },
   {
